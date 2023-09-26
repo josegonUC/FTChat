@@ -10,6 +10,9 @@ class Menu:
 		self.vent.geometry('230x180')
 		self.vent.resizable(False, False)
 
+		self.widgets()
+
+	def widgets(self):
 		#Contenedor
 		blank = Label(self.vent, text='').pack()
 		frame = Label(self.vent, text='¡Bienvenido a la Aplicación!', font=('calibri', 14), fg="Black").pack()

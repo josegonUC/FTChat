@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter as tk
-from _Chat.chatWindow import Appchat
+from tkinter import ttk
+from _Chat.chatWindow import AppChat
 
 class Login:
 	def __init__(self):
@@ -27,8 +28,11 @@ class Login:
 		self.password_input = Entry(self.vent, textvariable=self.contraseña).place(x=90, y=104)
 
 		#Botones
-		self.boton1 = Button(self.vent, text='Login', font=('calibri', 12), command=self.abrir_chat).place(x=90, y= 170)
+		self.boton1 = ttk.Button(self.vent, text='Enter', command=self.abrir_chat).place(x=90, y=170)
 
 	def abrir_chat(self):
-		open_chat = Appchat()
-		self.vent.destoy()
+		open_chat = AppChat()
+		self.vent.destroy()
+
+
+
