@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import ttk
+import tkinter as tk
 
 class AppChat:
 	def __init__(self):
@@ -10,11 +12,40 @@ class AppChat:
 		self.widgets()
 
 	def widgets(self):
-		self.container = Frame(self.root, width="1000", height="600").pack()
 
-		self.left_Frame = Frame(self.container, width="150", height="600", bg="White").place(x=0, y=0)
-		self.ce_Frame = Frame(self.container, width="630", height="430", bg="Grey").place(x=160,y=10)
-		self.principalEntry = Entry(self.container, width="75").place(x=160, y=460)
+		self.leftFrame()
+		self.centerFrame()
+		self.principalEntry = Entry(self.root, width="75").place(x=160, y=460)
+
+	def centerFrame(self):
+		self.ce_Frame = Frame(self.root, width="630", height="430").place(x=160,y=10)
+		self.vscrollBar = ttk.Scrollbar(self.ce_Frame, orient=tk.VERTICAL)
+
+		self.treeview = ttk.Treeview(self.ce_Frame, yscrollcommand=self.vscrollBar.set)
+
+		self.vscrollBar.config(command=self.treeview.yview)
+		self.vscrollBar.place(x=775, y=10, height=430)
+		self.treeview.place(x=160,y=10, height="428", width="615")
+
+	def leftFrame(self):
+		self.left_Frame = Frame(self.root, width="140", height="477").place(x=10, y=10)
+
+		self.leftTreeview = ttk.Treeview(self.left_Frame)
+
+		item1 = self.leftTreeview.insert('', END, text="Amigos")
+		self.leftTreeview.insert(item1, END, text="Amigo 1")
+		self.leftTreeview.insert(item1, END, text="Amigo 2")
+		self.leftTreeview.insert(item1, END, text="Amigo 3")
+		self.leftTreeview.insert(item1, END, text="Amigo 4")
+
+		item2 = self.leftTreeview.insert('', END, text="Juegos")
+		self.leftTreeview.insert(item2, END, text="Juego 1")
+		self.leftTreeview.insert(item2, END, text="Juego 2")
+		self.leftTreeview.insert(item2, END, text="Juego 3")
+		self.leftTreeview.insert(item2, END, text="Juego 4")
+
+		self.leftTreeview.place(x=10, y=10, width="140", height="477")
+		
 
 
 
