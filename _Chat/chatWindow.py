@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 import tkinter as tk
+from tkinter import scrolledtext
 
 class AppChat:
 	def __init__(self):
@@ -9,23 +10,26 @@ class AppChat:
 		self.root.geometry("800x500")
 		self.root.resizable(False,False)
 
-		self.widgets()
-
-	def widgets(self):
-
-		self.leftFrame()
+		self.principalInput()
 		self.centerFrame()
+		self.leftFrame()
+
+	def principalInput(self):
+
 		self.principalEntry = Entry(self.root, width="75").place(x=160, y=460)
 
 	def centerFrame(self):
-		self.ce_Frame = Frame(self.root, width="630", height="430").place(x=160,y=10)
-		self.vscrollBar = ttk.Scrollbar(self.ce_Frame, orient=tk.VERTICAL)
+		#self.ce_Frame = Frame(self.root, width="630", height="430").place(x=160,y=10)
+		"""self.vscrollBar = ttk.Scrollbar(self.root, orient=tk.VERTICAL)
 
 		self.treeview = ttk.Treeview(self.ce_Frame, yscrollcommand=self.vscrollBar.set)
 
 		self.vscrollBar.config(command=self.treeview.yview)
 		self.vscrollBar.place(x=775, y=10, height=430)
-		self.treeview.place(x=160,y=10, height="428", width="615")
+		self.treeview.place(x=160,y=10, height="428", width="615")"""
+
+		self.frame_chat = scrolledtext.ScrolledText(self.root, wrap=tk.WORD, width="630", height="430")
+		self.frame_chat.place(x=160,y=10)
 
 	def leftFrame(self):
 		self.left_Frame = Frame(self.root, width="140", height="477").place(x=10, y=10)
